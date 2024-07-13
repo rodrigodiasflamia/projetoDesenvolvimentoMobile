@@ -6,11 +6,16 @@ import 'package:imake/tasks/presentation/pages/new_task_screen.dart';
 import 'package:imake/tasks/presentation/pages/tasks_screen.dart';
 import 'package:imake/tasks/presentation/pages/update_task_screen.dart';
 
-import '../page_not_found.dart';
+import 'package:imake/page_not_found.dart';
+import 'package:imake/login.dart';
 
 Route onGenerateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case Pages.initial:
+      return MaterialPageRoute(
+        builder: (context) => Login(),
+      );
+    case Pages.home:
       return MaterialPageRoute(
         builder: (context) => const TasksScreen(),
       );
