@@ -27,7 +27,7 @@ class Login extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, Pages.home);
+                Navigator.pushReplacementNamed(context, Pages.splash);
               },
               child: Text('Login'),
             ),
