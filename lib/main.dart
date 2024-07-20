@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'IMake - Gerenciador de Tarefas',
               debugShowCheckedModeBanner: false,
-              initialRoute: Pages.initial,  // Pages.splash
+              initialRoute: Pages.splash,
               onGenerateRoute: onGenerateRoute,
               theme: ThemeData(
                 fontFamily: 'Sora',
