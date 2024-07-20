@@ -32,6 +32,9 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       if (event.taskModel.stopDateTime == null) {
         return emit(AddTaskFailure(error: 'Faltou a data de fim'));
       }
+      if (event.taskModel.detail == null) {
+        return emit(AddTaskFailure(error: 'Detail não pode ser vazio'));
+      }
       await taskRepository.createNewTask(event.taskModel);
       emit(AddTasksSuccess());
       final tasks = await taskRepository.getTasks();

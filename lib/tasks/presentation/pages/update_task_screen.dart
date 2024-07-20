@@ -24,6 +24,7 @@ class UpdateTaskScreen extends StatefulWidget {
 class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
   TextEditingController title = TextEditingController();
   TextEditingController description = TextEditingController();
+  TextEditingController detail = TextEditingController();
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
@@ -54,6 +55,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
     _selectedDay = _focusedDay;
     _rangeStart = widget.taskModel.startDateTime;
     _rangeEnd = widget.taskModel.stopDateTime;
+    detail.text = widget.taskModel.detail;
     super.initState();
   }
 
@@ -167,6 +169,22 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                               inputType: TextInputType.multiline,
                               fillColor: kWhiteColor,
                               onChange: (value) {}),
+                          buildText(
+                              'Detail',
+                              kBlackColor,
+                              textMedium,
+                              FontWeight.bold,
+                              TextAlign.start,
+                              TextOverflow.clip),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                          BuildTextField(
+                              hint: "Detail",
+                              controller: detail,
+                              inputType: TextInputType.text,
+                              fillColor: kWhiteColor,
+                              onChange: (value) {}),
                           const SizedBox(height: 20),
                           SizedBox(
                             width: size.width,
@@ -193,7 +211,8 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                                       description: description.text,
                                       completed: widget.taskModel.completed,
                                       startDateTime: _rangeStart,
-                                      stopDateTime: _rangeEnd);
+                                      stopDateTime: _rangeEnd,
+                                      detail: detail.text);
                                   context.read<TasksBloc>().add(
                                       UpdateTaskEvent(taskModel: taskModel));
                                 },

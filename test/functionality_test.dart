@@ -36,7 +36,8 @@ void main() {
           title: 'title',
           description: 'description',
           startDateTime: DateTime.now(),
-          stopDateTime: DateTime.now());
+          stopDateTime: DateTime.now(),
+          detail: 'detail');
       expect(sut.tasks.length, 0);
       await sut.createTask(task);
       expect(sut.tasks.length, 1);
@@ -51,7 +52,8 @@ void main() {
           title: 'title',
           description: 'description',
           startDateTime: DateTime.now(),
-          stopDateTime: DateTime.now());
+          stopDateTime: DateTime.now(),
+          detail: 'detail');
       sut.createTask(task);
       expect(sut.tasks[0].title, 'title');
       final updatedTask = TaskModel(
@@ -59,7 +61,8 @@ void main() {
           title: 'new title',
           description: 'new description',
           startDateTime: DateTime.now(),
-          stopDateTime: DateTime.now());
+          stopDateTime: DateTime.now(),
+          detail: 'detail');
       sut.updateTask(updatedTask);
       expect(sut.tasks[0].title, 'new title');
       expect(sut.tasks[0].description, 'new description');
@@ -74,7 +77,8 @@ void main() {
           title: 'delete_task_title',
           description: 'delete_task_description',
           startDateTime: DateTime.now(),
-          stopDateTime: DateTime.now());
+          stopDateTime: DateTime.now(),
+          detail: 'detail');
       sut.createTask(task);
       expect(sut.tasks.length, 1);
       expect(sut.tasks[0].id, 'delete_task_id');

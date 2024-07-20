@@ -22,6 +22,7 @@ class NewTaskScreen extends StatefulWidget {
 class _NewTaskScreenState extends State<NewTaskScreen> {
   TextEditingController title = TextEditingController();
   TextEditingController description = TextEditingController();
+  TextEditingController detail = TextEditingController();
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
@@ -154,6 +155,22 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                               inputType: TextInputType.multiline,
                               fillColor: kWhiteColor,
                               onChange: (value) {}),
+                          buildText(
+                              'Detail',
+                              kBlackColor,
+                              textMedium,
+                              FontWeight.bold,
+                              TextAlign.start,
+                              TextOverflow.clip),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          BuildTextField(
+                              hint: "Detail",
+                              controller: detail,
+                              inputType: TextInputType.text,
+                              fillColor: kWhiteColor,
+                              onChange: (value) {}),
                           const SizedBox(height: 20),
                           Row(
                             children: [
@@ -217,7 +234,8 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                                           title: title.text,
                                           description: description.text,
                                           startDateTime: _rangeStart,
-                                          stopDateTime: _rangeEnd);
+                                          stopDateTime: _rangeEnd,
+                                          detail: detail.text);
                                       context.read<TasksBloc>().add(
                                           AddNewTaskEvent(
                                               taskModel: taskModel));
