@@ -19,13 +19,18 @@ class TaskDataProvider {
             .map((taskJson) => TaskModel.fromJson(json.decode(taskJson)))
             .toList();
         tasks.sort((a, b) {
-          if (a.completed == b.completed) {
-            return 0;
-          } else if (a.completed) {
-            return 1;
-          } else {
-            return -1;
+          DateTime aStart = a.startDateTime ?? DateTime.now();
+          DateTime aStop = a.stopDateTime ?? DateTime.now();
+          DateTime bStart = b.startDateTime ?? DateTime.now();
+          DateTime bStop = b.stopDateTime ?? DateTime.now();
+
+          // Sort ascending by date start
+          if (aStart.compareTo(bStart) != 0){
+            return aStart.compareTo(bStart);
           }
+
+          // Sort ascending by date stop
+          return aStop.compareTo(bStop);
         });
       }
       return tasks;
@@ -37,7 +42,7 @@ class TaskDataProvider {
   Future<List<TaskModel>> sortTasks(int sortOption) async {
     switch (sortOption) {
       case 0:
-        //sort by completed tasks
+        // Sort by completed tasks
         tasks.sort((a, b) {
           if (!a.completed && b.completed) {
             return 1;
@@ -48,7 +53,7 @@ class TaskDataProvider {
         });
         break;
       case 1:
-        //sort by pending tasks
+        // Sort by pending tasks
         tasks.sort((a, b) {
           if (a.completed == b.completed) {
             return 0;
