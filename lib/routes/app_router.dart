@@ -7,7 +7,7 @@ import 'package:imake/tasks/presentation/pages/tasks_screen.dart';
 import 'package:imake/tasks/presentation/pages/update_task_screen.dart';
 
 import 'package:imake/page_not_found.dart';
-import 'package:imake/login.dart';
+import 'package:imake/tasks/presentation/pages/login.dart';
 import 'package:imake/splash_screen.dart';
 
 Route onGenerateRoute(RouteSettings routeSettings) {

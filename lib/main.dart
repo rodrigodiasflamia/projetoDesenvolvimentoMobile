@@ -9,7 +9,7 @@ import 'package:imake/tasks/data/repository/task_repository.dart';
 import 'package:imake/tasks/presentation/bloc/tasks_bloc.dart';
 import 'package:imake/utils/color_palette.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:imake/login.dart';
+import 'package:imake/tasks/presentation/pages/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

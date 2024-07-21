@@ -13,6 +13,8 @@ import 'package:imake/utils/util.dart';
 import '../../../components/widgets.dart';
 import '../../../routes/pages.dart';
 import '../../../utils/font_sizes.dart';
+import 'new_task_screen.dart';
+import 'about.dart';
 
 class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
@@ -117,6 +119,15 @@ class _TasksScreenState extends State<TasksScreen> {
                   padding: const EdgeInsets.only(right: 20),
                   child: SvgPicture.asset('assets/svgs/filter.svg'),
                 ),
+              ),
+              IconButton(
+                icon: Icon(Icons.info_outline, color: kBlackColor),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AboutScreen()),
+                  );
+                },
               ),
             ],
           ),
@@ -224,12 +235,17 @@ class _TasksScreenState extends State<TasksScreen> {
                     }
                     return Container();
                   }))),
-          floatingActionButton: FloatingActionButton(
-              child: const Icon(
-                Icons.add_circle,
-                color: kPrimaryColor,
-              ),
-              onPressed: null),
-        )));
+              floatingActionButton: FloatingActionButton(
+                  child: const Icon(
+                    Icons.add_circle,
+                    color: kPrimaryColor,
+                  ),
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NewTaskScreen()),
+                    );
+                  }),
+            )));
   }
 }
